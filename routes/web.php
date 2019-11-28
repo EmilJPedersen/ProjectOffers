@@ -20,7 +20,8 @@ Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
 
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return view('dashboard/show');
 });
 
 Auth::routes();
