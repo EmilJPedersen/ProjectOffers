@@ -12,10 +12,8 @@
                 <a class="nav-link" href="#">Offer</a>
             </li>
             <li class="nav-item active">
+                {{-- <a class="nav-link" href="{{route('client.create')}}">Client</a> --}}
                 <a class="nav-link" href="#">Client</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">test</a>
             </li>
         </ul>
     </div>

@@ -1,0 +1,16 @@
+.footer {
+    background-color: $footer-bg-color;
+    color: $footer-text-color;
+
+    .nav-link {
+        color: $secondary-nav-link-color;
+        font-size: 12px;
+        line-height: 2;
+        text-transform: unset;
+        padding: 0;
+    }
+}
+
+.nav-footer {
+    padding-bottom: 16px;
+}
