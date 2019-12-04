@@ -76,7 +76,8 @@
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
                         @endif
-                        @include('partials/navbar')
+                        {{-- @include('partials/navbar') --}}
+                        @extends('layouts.app')
                     @endauth
                 </div>
             @endif

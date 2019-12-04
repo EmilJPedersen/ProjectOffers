@@ -3,12 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content-top')
-    @include('../partials/navbar')
 @endsection
-
 
 @section('content')
 
+<h1>View the clients</h1>
 
-</div>
 @endsection

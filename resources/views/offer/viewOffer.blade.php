@@ -7,8 +7,6 @@
 
 @section('content')
 
-<div>
-
-</div>
+<h1>View the offers</h1>
 
 @endsection
