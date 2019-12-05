@@ -34,7 +34,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Client
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url('createCliet') }}">Create a client</a></li>
+                            <li><a href="{{ url('createClient') }}">Create a client</a></li>
                             <li><a href="{{ url('viewClient') }}">View clients</a></li>
                         </ul>
                     </li>
