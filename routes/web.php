@@ -30,15 +30,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/homepage', 'HomeController@index')->name('homepage');
 
 // Clients
-Route::get('clients', 'ClientController@index')->name('client.index');
-Route::get('/createClient', 'clientController@store')->name('createClient');
+Route::get('/clients', 'ClientController@index')->name('client.index');
+Route::get('/createClient', 'clientController@create')->name('client.createClient');
+Route::post('/createClient', 'ClientController@store')->name('client.store');
 // Route::get('/viewClient', 'clientController@index')->name('viewClient');
 // Route::get('createClient', function () {
 //     return view('client/createClient');
 // });
-Route::get('viewClient', function () {
-    return view('client/viewClient');
-});
+// Route::get('viewClient', function () {
+//     return view('client/viewClient');
+// });
 
 // Offer
 // Route::get('/createOffer', 'offerController@index')->name('createOffer');

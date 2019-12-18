@@ -20,7 +20,7 @@ class CreateClientTabel extends Migration
             $table->tinyInteger('enabled', 1);
             $table->timestamp('created_date');
             $table->integer('account_type');
-            $table->string('cust_note');
+            $table->string('cust_note')->nullable();
             $table->integer('invoice_method');
         });
     }

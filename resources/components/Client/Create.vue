@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="search">
+    <!-- <div class="search">
       <input
         name="search"
         type="text"
@@ -40,7 +40,7 @@
           </svg>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <hr>
     <div class="form-group pt-2">
@@ -166,7 +166,7 @@ import { debounce } from "lodash";
 export default {
   data() {
     return {
-      search: "",
+    //   search: "",
       name: "",
       address: "",
       zip: "",
@@ -174,28 +174,28 @@ export default {
       economic: "",
       vat: "",
       results: [],
-      isSearching: false,
+    //   isSearching: false,
     };
   },
-  created() {
-    this.debounceSearch = debounce(this.companySearch, 500);
-  },
+//   created() {
+//     this.debounceSearch = debounce(this.companySearch, 500);
+//   },
   methods: {
-    companySearch() {
-      this.results = [];
-      if (this.search.length >= 3) {
-        this.isSearching = true;
-        axios.get('/api/cvr/' + this.search)
-          .then(({data}) => {
-            const mapped = data.companies.map((c) => c._source.Vrvirksomhed);
-            this.results = mapped;
-            this.isSearching = false;
-          })
-          .catch(response => {
-            console.error(response);
-          });
-      }
-    },
+    // companySearch() {
+    //   this.results = [];
+    //   if (this.search.length >= 3) {
+    //     this.isSearching = true;
+    //     axios.get('/api/cvr/' + this.search)
+    //       .then(({data}) => {
+    //         const mapped = data.companies.map((c) => c._source.Vrvirksomhed);
+    //         this.results = mapped;
+    //         this.isSearching = false;
+    //       })
+    //       .catch(response => {
+    //         console.error(response);
+    //       });
+    //   }
+    // },
     selectResult(result) {
       this.results = [];
 

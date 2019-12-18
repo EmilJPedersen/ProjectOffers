@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 
-use App\Project\Enum\AccountTypeEnum;
-use App\Project\User\User;
+// use App\Project\Enum\AccountTypeEnum;
+// use App\Project\User\User;
 use Illuminate\Http\Request;
 use App\Project\Client\Client;
 // use App\Project\Project\Project;
 use App\Project\Address\Address;
 // use App\Project\Contact\Contact;
 use Illuminate\Support\Facades\DB;
-use App\Project\Task\Task;
+// use App\Project\Task\Task;
 
 class ClientController extends Controller
 {
@@ -114,7 +114,7 @@ class ClientController extends Controller
 
     public function create()
     {
-        return view('client.create');
+        return view('client.createClient');
     }
 
     public function store(Request $request){
@@ -150,7 +150,7 @@ class ClientController extends Controller
             $address->post_code = $request->postcode;
             if($address->save())
             {
-                return redirect()->route('client.show', $client->id);
+                return redirect()->route('client.index', $client->id); //client.show
             }
 
         }else{

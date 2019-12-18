@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Clients')
+@section('title', 'Create Client')
 
 @section('content')
 
@@ -21,15 +21,15 @@
                             <span aria-hidden="true" class="mdi mdi-close"></span>
                         </button>
                         <strong>Errors: </strong> <br>
-                            @foreach ($errors->all() as $error)
-                                <p class="mt-0">{{$error}}</p>
-                            @endforeach
+                        @foreach ($errors->all() as $error)
+                        <p class="mt-0">{{$error}}</p>
+                        @endforeach
                     </div>
                 </div>
             </div>
             @endif
-                @if(isset($error))
-                <div class="col-lg-12">
+            @if(isset($error))
+            <div class="col-lg-12">
                 <div role="alert" class="alert alert-danger alert-icon alert-icon-border alert-dismissible">
                     <div class="icon">
                         <span class="mdi mdi-close-circle-o"></span>
@@ -39,29 +39,29 @@
                             <span aria-hidden="true" class="mdi mdi-close"></span>
                         </button>
                         <strong>Error: </strong> <br>
-                          {{$error}}
+                        {{$error}}
                     </div>
                 </div>
             </div>
-                @endif
+            @endif
 
             <div class="card-body">
                 @if(isset($message))
-                    <div role="alert" class="alert alert-{{$status}} alert-icon alert-icon-border alert-dismissible">
-                        <div class="icon">
-                            <span class="mdi mdi-check"></span>
-                        </div>
-                        <div class="message">
-                            <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-                                <span aria-hidden="true" class="mdi mdi-close"></span>
-                            </button>
-                            {{$message}}
-                        </div>
+                <div role="alert" class="alert alert-{{$status}} alert-icon alert-icon-border alert-dismissible">
+                    <div class="icon">
+                        <span class="mdi mdi-check"></span>
                     </div>
+                    <div class="message">
+                        <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                            <span aria-hidden="true" class="mdi mdi-close"></span>
+                        </button>
+                        {{$message}}
+                    </div>
+                </div>
                 @endif
 
                 {{Form::open(array('action' => 'ClientController@store'))}}
-						 <client-create></client-create>
+                <client-create></client-create>
                 {{ Form::close() }}
             </div>
         </div>
