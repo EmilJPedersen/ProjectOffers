@@ -1,47 +1,5 @@
 <template>
-  <div>
-    <!-- <div class="search">
-      <input
-        name="search"
-        type="text"
-        placeholder="Search on Client Name or VAT ID"
-        class="form-control"
-        @keyup="debounceSearch"
-        v-model="search"
-      >
-
-      <div v-if="results.length > 0" class="searchResults">
-        <ul class="list-group">
-          <li @click="selectResult(result)" v-for="result in results" :key="result.vat" class="list-group-item list-group-item-action">
-            {{result.virksomhedMetadata.nyesteNavn ? result.virksomhedMetadata.nyesteNavn.navn : "!!!! NAVN MANGLER"}}
-            <br>
-            <span>{{result.virksomhedMetadata.nyesteBeliggenhedsadresse.vejnavn}}
-              {{result.virksomhedMetadata.nyesteBeliggenhedsadresse.husnummerFra}}
-              {{result.virksomhedMetadata.nyesteBeliggenhedsadresse.postnummer}}
-              {{result.virksomhedMetadata.nyesteBeliggenhedsadresse.postdistrikt}}</span>
-            <br>
-            <span>CVR: {{result.cvrNummer}}</span>
-          </li>
-        </ul>
-      </div>
-
-      <div v-if="isSearching" class="searchIndicator">
-        <div class="be-spinner">
-          <svg width="35px" height="35px" viewBox="0 0 66 66">
-            <circle
-              fill="none"
-              stroke-width="4"
-              stroke-linecap="round"
-              cx="33"
-              cy="33"
-              r="30"
-              class="circle"
-            ></circle>
-          </svg>
-        </div>
-      </div>
-    </div> -->
-
+  <div class="container">
     <hr>
     <div class="form-group pt-2">
       <label for="clientname">CVR</label>
@@ -166,7 +124,6 @@ import { debounce } from "lodash";
 export default {
   data() {
     return {
-    //   search: "",
       name: "",
       address: "",
       zip: "",
@@ -174,28 +131,9 @@ export default {
       economic: "",
       vat: "",
       results: [],
-    //   isSearching: false,
     };
   },
-//   created() {
-//     this.debounceSearch = debounce(this.companySearch, 500);
-//   },
   methods: {
-    // companySearch() {
-    //   this.results = [];
-    //   if (this.search.length >= 3) {
-    //     this.isSearching = true;
-    //     axios.get('/api/cvr/' + this.search)
-    //       .then(({data}) => {
-    //         const mapped = data.companies.map((c) => c._source.Vrvirksomhed);
-    //         this.results = mapped;
-    //         this.isSearching = false;
-    //       })
-    //       .catch(response => {
-    //         console.error(response);
-    //       });
-    //   }
-    // },
     selectResult(result) {
       this.results = [];
 
