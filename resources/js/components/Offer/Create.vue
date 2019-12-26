@@ -29,19 +29,22 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="table-responsive">
+                <button class="float-right">+</button>
                     <table class="table">
                         <thead>
                             <tr>
                                 <td>Title</td>
-                                <td>Estimate</td>
                                 <td>Disicription</td>
+                                <td>Estimate</td>
+                                <td>Save as template</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="number"></td>
+                                <td><input type="checkbox"></td>
                             </tr>
                         </tbody>
                     </table>
