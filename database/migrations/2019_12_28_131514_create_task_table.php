@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientTabel extends Migration
+class CreateTaskTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateClientTabel extends Migration
      */
     public function up()
     {
-        Schema::create('client', function (Blueprint $table) {
-            $table->integer('CVR');
-            $table->string('Client_Name');
-            $table->double('Default_Price');
+        Schema::create('task', function (Blueprint $table) {
+            $table->increments('TID');
+            $table->string('Task_Name');
+            $table->string('Task_Description')->nullable();
+            $table->string('Estimate');
+            $table->string('OID');
         });
     }
 
@@ -27,6 +29,6 @@ class CreateClientTabel extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client');
+        Schema::dropIfExists('task');
     }
 }

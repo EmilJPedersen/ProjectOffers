@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Clients')
+{{-- @section('title') --}}
 
 @section('content')
 <div class="row">
@@ -19,30 +20,32 @@
                         </div>
                     </form>
                 </div>
-                <table class="row-clickable table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th style="width:5%;">ID</th>
-                            <th style="width:25%;">Name</th>
-                            <th style="width:25%;">Default rate</th>
-                            <th style="width:25%;">Offers</th>
-                            {{-- <th style="width:25%;">Active Projects</th> --}}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($clients as $client)
-                        <tr>
-                            <td>{{ $client->id }}</td>
-                            <td>{{ $client->name}}</td>
-                            <td>{{$client->default_price}}</td>
-                            {{-- <td>{{$client->offers->count()}}</td> --}}
+                <div class="card card-border-color card-border-color-primary">
+                    <table class="row-clickable table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width:5%;">CVR</th>
+                                <th style="width:25%;">Name</th>
+                                <th style="width:5%;">Default rate</th>
+                                <th style="width:5%;">Offers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($clients as $client)
+                            <tr>
+                                <td>{{ $client->CVR }}</td>
+                                <td>{{ $client->Client_Name}}</td>
+                                <td>{{ $client->Default_Price}}</td>
+                                <td>Link to the clients offers</td>
+
+                                @if (count($clients) <= 0) <tr class='clickable-row' data-href='url://'>
+                                    <td colspan="3" style="text-align: center;">No results</td>
+                                @endif
+                            </tr>
                             @endforeach
-                            @if (count($clients) <= 0) <tr class='clickable-row' data-href='url://'>
-                                <td colspan="3" style="text-align: center;">No results</td>
-                        </tr>
-                        @endif
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -28,22 +28,6 @@
                 </div>
             </div>
             @endif
-            @if(isset($error))
-            <div class="col-lg-12">
-                <div role="alert" class="alert alert-danger alert-icon alert-icon-border alert-dismissible">
-                    <div class="icon">
-                        <span class="mdi mdi-close-circle-o"></span>
-                    </div>
-                    <div class="message">
-                        <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-                            <span aria-hidden="true" class="mdi mdi-close"></span>
-                        </button>
-                        <strong>Error: </strong> <br>
-                        {{$error}}
-                    </div>
-                </div>
-            </div>
-            @endif
 
             <div class="card-body">
                 @if(isset($message))
@@ -67,5 +51,4 @@
         </div>
     </div>
 </div>
-{{-- <script src="js/app.js"></script> --}}
 @endsection

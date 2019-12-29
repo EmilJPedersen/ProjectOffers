@@ -21,25 +21,16 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::orderBy('name', 'ASC');
-
-
-		//get all or just active clients
-		$showInactiveClients = request('showInactiveClients');
-		$clients->where('enabled', !$showInactiveClients);
-
-		$accountType = (is_numeric(request('accountType'))) ? request('accountType') : 1; //return 1 as default = clients!
-		$clients->where('account_type', $accountType);
-
+        $clients = Client::orderBy('CVR');
 
         $clients = $clients->get();
 
-        return view('client.index', compact('clients', 'showInactiveClients','accountType'));
+        return view('client.index', compact('clients'));
     }
 
     public function show(Client $client)
     {
-        $contacts = Contact::where('cust_id', $client->id)->get();
+        // $contacts = Contact::where('cust_id', $client->id)->get();
 
         $client->load([
             'projects' => function ($query) {
@@ -50,67 +41,67 @@ class ClientController extends Controller
 
         $projects = $client->projects;
 
-        $projects = Self::loadProjectsHours($projects);
+        // $projects = Self::loadProjectsHours($projects);
 
         return view('client.show', compact('client', 'projects', 'contacts'));
     }
 
-    public function loadProjectsHours (iterable $projects){
+    // public function loadProjectsHours (iterable $projects){
 
-        $worked = [];
-        $invoiced = [];
+    //     $worked = [];
+    //     $invoiced = [];
 
-        foreach ($projects as $project) {
-            $hours = Task::where('projectId', $project->projectId)
-                                    ->select([
-                                        DB::raw('IFNULL(SUM(worked), 0) as worked'),
-                                        DB::raw('IFNULL(SUM(consumed), 0) as invoiced')
-                                    ])
-                                    ->first();
+    //     foreach ($projects as $project) {
+    //         $hours = Task::where('projectId', $project->projectId)
+    //                                 ->select([
+    //                                     DB::raw('IFNULL(SUM(worked), 0) as worked'),
+    //                                     DB::raw('IFNULL(SUM(consumed), 0) as invoiced')
+    //                                 ])
+    //                                 ->first();
 
-            array_push($worked, $hours->worked);
-            array_push($invoiced, $hours->invoiced);
+    //         array_push($worked, $hours->worked);
+    //         array_push($invoiced, $hours->invoiced);
 
-            $project['worked'] = $hours->worked;
-            $project['invoiced'] = $hours->invoiced;
+    //         $project['worked'] = $hours->worked;
+    //         $project['invoiced'] = $hours->invoiced;
 
-            if ($project->invoiced && $project->worked ) {
-                $project['invoicedPercent'] = round(($project->invoiced / $project->worked) * 100, 0);
-            }
-            if (!$project->worked) {
-                $project['invoicedPercent'] = 100;
-            }
-            if (!$project->invoiced) {
-                $project['invoicedPercent'] = 0;
-            }
-            if (!$project->invoiced && !$project->worked){
-                $project['invoicedPercent'] = '';
-            }
-        }
+    //         if ($project->invoiced && $project->worked ) {
+    //             $project['invoicedPercent'] = round(($project->invoiced / $project->worked) * 100, 0);
+    //         }
+    //         if (!$project->worked) {
+    //             $project['invoicedPercent'] = 100;
+    //         }
+    //         if (!$project->invoiced) {
+    //             $project['invoicedPercent'] = 0;
+    //         }
+    //         if (!$project->invoiced && !$project->worked){
+    //             $project['invoicedPercent'] = '';
+    //         }
+    //     }
 
-        return $projects;
-    }
+    //     return $projects;
+    // }
 
-    public function timesheets(Client $client)
-    {
-        $clients = Client::select('id', 'name')->where('enabled', '1')->orderBy('name')->get();
-        $projects = Project::select('projectId', 'cust_id', 'name')->where('statusKey', '<=', '100')->orderBy('name')->get();
-        $members = User::getAll();
+    // public function timesheets(Client $client)
+    // {
+    //     $clients = Client::select('id', 'name')->where('enabled', '1')->orderBy('name')->get();
+    //     $projects = Project::select('projectId', 'cust_id', 'name')->where('statusKey', '<=', '100')->orderBy('name')->get();
+    //     $members = User::getAll();
 
-        return view('client.timesheets', compact('client', 'clients', 'projects', 'members'));
-    }
+    //     return view('client.timesheets', compact('client', 'clients', 'projects', 'members'));
+    // }
 
-    public function contacts(Client $client)
-    {
-        $clients = Client::select('id', 'name')->where('enabled', '1')->orderBy('name')->get();
+    // public function contacts(Client $client)
+    // {
+    //     $clients = Client::select('id', 'name')->where('enabled', '1')->orderBy('name')->get();
 
-        if (isset(request()->clientId)) {
-            $client = Client::findOrFail(request()->clientId);
-        }
+    //     if (isset(request()->clientId)) {
+    //         $client = Client::findOrFail(request()->clientId);
+    //     }
 
-        $contacts = $client->load('contacts')->contacts;
-        return view('client.contacts', compact('client', 'clients', 'contacts'));
-    }
+    //     $contacts = $client->load('contacts')->contacts;
+    //     return view('client.contacts', compact('client', 'clients', 'contacts'));
+    // }
 
     public function create()
     {
@@ -120,42 +111,25 @@ class ClientController extends Controller
     public function store(Request $request){
         //validate data
         $validatedData = $request->validate([
+            'cvr' => 'required',
             'name' => 'required|max:255',
-            'price' => 'required',
-            'economicid' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'postcode' => 'required',
-            'invoicemethod' => 'required'
-
+            'price' => 'required'
         ]);
-        //Check if a customer already have a economicid
-         if(Client::findClientByEconomicId($request->economicid)){
-             $error = "Economic id is allready in use by ". Client::findClientByEconomicId($request->economicid)->name;
-            return view('client.createClient', compact('error'));
-         }
         $client = new Client;
-        $client->name = $request->name;
-        $client->default_price = $request->price;
-        $client->invoice_method = $request->invoicemethod;
-        $client->regnskab_kundeid = $request->economicid;
+        $client->CVR = $request->cvr;
+        $client->Client_Name = $request->name;
+        $client->Default_Price = $request->price;
+
         if($client->save())
         {
-            $address = new Address;
-            $address->owner_id = $client->id;
-            $address->owner_table = "customer";
-            $address->address_type = "physical";
-            $address->line_1 = $request->address;
-            $address->suburb = $request->city;
-            $address->post_code = $request->postcode;
-            if($address->save())
-            {
-                return redirect()->route('client.index', $client->id); //client.show
-            }
-
+            return redirect()->route('client.index', $client->id); //client.show
         }else{
             $error = "Client not created!";
             return view('client.createClient', compact('error'));
         }
+    }
+
+    public function delete(Request $request){
+        DB::table('Clients')->where('CVR', '=', $request->cvr)->delete();
     }
 }

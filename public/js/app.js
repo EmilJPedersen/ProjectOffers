@@ -1886,117 +1886,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: "",
-      address: "",
-      zip: "",
-      city: "",
-      economic: "",
-      vat: "",
+      cvr: "",
+      default_price: "",
       results: []
     };
   },
   methods: {
     selectResult: function selectResult(result) {
       this.results = [];
-      var address = result.virksomhedMetadata.nyesteBeliggenhedsadresse;
-      var husnummer = address.husnummerFra + (address.husnummerTil ? "-" + address.husnummerTil : "");
-      var bogstav = address.bogstavFra ? address.bogstavFra + (address.bogstavTil ? "-" + address.bogstavTil : "") : "";
-      var streetDetails = husnummer + bogstav + " " + (address.etage ? address.etage : "") + " " + (address.sidedoer ? address.sidedoer : "");
-      this.name = result.virksomhedMetadata.nyesteNavn ? result.virksomhedMetadata.nyesteNavn.navn : "NAVN MANGLER";
-      this.vat = result.cvrNummer;
-      this.economic = result.cvrNummer;
-      this.address = address.vejnavn + " " + streetDetails;
-      this.zip = address.postnummer;
-      this.city = address.postdistrikt;
+      this.name = result.name;
+      this.cvr = result.cvrNummer;
+      this.price = result.default_price;
     }
   }
 });
@@ -2347,7 +2252,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.search[data-v-5a9adb85] {\r\n    position: relative;\n}\n.searchIndicator[data-v-5a9adb85] {\r\n    position: absolute;\r\n    top: 5px;\r\n    right: 20px;\n}\n.searchResults[data-v-5a9adb85] {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 40px;\r\n    min-width: 250px;\r\n    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\r\n    z-index: 99;\n}\n.searchResults ul li[data-v-5a9adb85] {\r\n    cursor: pointer;\n}\n.searchResults li span[data-v-5a9adb85] {\r\n    font-size: 0.8rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.search[data-v-5a9adb85] {\n  position: relative;\n}\n.searchIndicator[data-v-5a9adb85] {\n  position: absolute;\n  top: 5px;\n  right: 20px;\n}\n.searchResults[data-v-5a9adb85] {\n  position: absolute;\n  left: 0;\n  top: 40px;\n  min-width: 250px;\n  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\n  z-index: 99;\n}\n.searchResults ul li[data-v-5a9adb85] {\n  cursor: pointer;\n}\n.searchResults li span[data-v-5a9adb85] {\n  font-size: 0.8rem;\n}\n", ""]);
 
 // exports
 
@@ -20653,22 +20558,22 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("hr"),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group pt-2" }, [
-      _c("label", { attrs: { for: "clientname" } }, [_vm._v("CVR")]),
+    _c("div", { staticClass: "col-lg-4" }, [
+      _c("label", { attrs: { for: "cvr" } }, [_vm._v("CVR")]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
         attrs: {
-          id: "vat",
-          name: "vat",
+          id: "cvr",
+          name: "cvr",
           type: "text",
           placeholder: "Enter Client CVR"
         },
-        domProps: { value: _vm.vat }
+        domProps: { value: _vm.cvr }
       })
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group pt-2" }, [
+    _c("div", { staticClass: "col-lg-4" }, [
       _c("label", { attrs: { for: "clientname" } }, [_vm._v("Client Name")]),
       _vm._v(" "),
       _c("input", {
@@ -20683,85 +20588,9 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "address" } }, [_vm._v("Address")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          id: "address",
-          name: "address",
-          type: "text",
-          placeholder: "Enter Client Address"
-        },
-        domProps: { value: _vm.address }
-      })
-    ]),
+    _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "postcode" } }, [_vm._v("Postcode")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "postcode",
-              name: "postcode",
-              type: "text",
-              placeholder: "Enter Client Postcode"
-            },
-            domProps: { value: _vm.zip }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "suburb" } }, [_vm._v("City")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "city",
-              name: "city",
-              type: "text",
-              placeholder: "Enter Client City"
-            },
-            domProps: { value: _vm.city }
-          })
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "economicid" } }, [
-            _vm._v("Economic id")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "economicid",
-              name: "economicid",
-              type: "number",
-              placeholder: "Enter Economic ID"
-            },
-            domProps: { value: _vm.economic }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(1)
-    ]),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3)
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -20790,63 +20619,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-4" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "invoicemethod" } }, [
-          _vm._v("Invoice Method")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { id: "invoicemethod", name: "invoicemethod", value: "0" }
-          },
-          [
-            _c("option", { attrs: { value: "0" } }, [
-              _vm._v("Collected Invoice")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [
-              _vm._v("Invoice Per Project")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group pt-4" }, [
-      _c(
-        "label",
-        { staticClass: "custom-control custom-checkbox custom-control-inline" },
-        [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              id: "enabled",
-              name: "enabled",
-              type: "checkbox",
-              checked: ""
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "span",
-            { staticClass: "custom-control-label custom-control-color" },
-            [_vm._v("Enabled")]
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row pt-3" }, [
       _c("div", { staticClass: "col-sm-6" }, [
         _c(
@@ -20855,7 +20627,7 @@ var staticRenderFns = [
             staticClass: "btn btn-space btn-primary",
             attrs: { type: "submit" }
           },
-          [_vm._v("\n                Create Client\n            ")]
+          [_vm._v("Create Client")]
         )
       ])
     ])
@@ -33981,8 +33753,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\emilm\OneDrive\Dokumenter\GitHub\ProjectOffers\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\emilm\OneDrive\Dokumenter\GitHub\ProjectOffers\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Emil\Desktop\Final Exam\ProjectOffers\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Emil\Desktop\Final Exam\ProjectOffers\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
