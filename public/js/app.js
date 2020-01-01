@@ -2114,6 +2114,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2170,7 +2172,206 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      projectName: "",
+      projectDescription: "",
+      title: "",
+      description: "",
+      estimatehours: "",
+      save: "",
+      devTime: "",
+      manageTime: "",
+      totalTime: "",
+      price: "",
+      results: [],
+      tableRows: [],
+      counter: 1,
+      estrownum: 1
+    };
+  },
+  methods: {
+    selectResult: function selectResult(result) {
+      this.results = [];
+      this.projectName = result.projectName;
+      this.projectDescription = result.projectDescription;
+      this.title = result.title;
+      this.description = result.description;
+      this.estimatehours = result.estimatehours;
+      this.save = result.save;
+      this.devTime = result.devTime;
+      this.manageTime = result.manageTime;
+      this.totalTime = result.totalTime;
+      this.price = result.price;
+    },
+    // addTableRow: function() {
+    //   this.counter++;
+    //   this.tableRows.push("Table Row " + this.counter);
+    // },
+    addItem: function addItem() {
+      var my_object = {
+        title: this.title,
+        description: this.description,
+        estimatehours: this.estimatehours,
+        save: this.save
+      };
+      this.tableRows.push(my_object);
+      this.title = "";
+      this.description = "";
+      this.estimatehours = "";
+      this.save = "";
+    } // addEstimateRow() {
+    //   estrownum++;
+    //   $("#tblEstimate > tbody:last-child").append(
+    //     '<tr><td><input placeholder="Beskriv ydelse her (max 35 tegn)" id="estlinetext_manuel_' +
+    //       estrownum +
+    //       '" type="text" value="" class="estimate_text" onchange="calculate();" maxlength="35">'+
+    //       '</td><td><input id="estlinevalue_manuel" type="text" value="0" class="estimate_value" onchange="calculate();" style="text-align:right;"></td></tr>'
+    //   );
+    //   $("#estlinetext_manuel_" + estrownum).focus();
+    // }
+
+  }
+});
 
 /***/ }),
 
@@ -2252,7 +2453,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.search[data-v-5a9adb85] {\n  position: relative;\n}\n.searchIndicator[data-v-5a9adb85] {\n  position: absolute;\n  top: 5px;\n  right: 20px;\n}\n.searchResults[data-v-5a9adb85] {\n  position: absolute;\n  left: 0;\n  top: 40px;\n  min-width: 250px;\n  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\n  z-index: 99;\n}\n.searchResults ul li[data-v-5a9adb85] {\n  cursor: pointer;\n}\n.searchResults li span[data-v-5a9adb85] {\n  font-size: 0.8rem;\n}\n", ""]);
+exports.push([module.i, "\n.search[data-v-5a9adb85] {\r\n  position: relative;\n}\n.searchIndicator[data-v-5a9adb85] {\r\n  position: absolute;\r\n  top: 5px;\r\n  right: 20px;\n}\n.searchResults[data-v-5a9adb85] {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 40px;\r\n  min-width: 250px;\r\n  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\r\n  z-index: 99;\n}\n.searchResults ul li[data-v-5a9adb85] {\r\n  cursor: pointer;\n}\n.searchResults li span[data-v-5a9adb85] {\r\n  font-size: 0.8rem;\n}\r\n", ""]);
 
 // exports
 
@@ -20933,32 +21134,162 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "col-md-4 panel panel-default",
+        staticStyle: { "padding-bottom": "93px", "background-color": "#e3f2fd" }
+      },
+      [
+        _c("center", [
+          _c("h5", { staticClass: "font-weight-bold" }, [_vm._v("Total")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "media text-muted pt-3" }, [
+            _c("div", { staticClass: "media-body pb-3 mb-0 small lh-125" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [
+                  _vm._v("\n              Development Hours:\n              "),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3" }, [
+                  _c("input", {
+                    staticClass: "calculation_result",
+                    attrs: {
+                      type: "text",
+                      id: "TotalDeveloperHours",
+                      name: "TotalDeveloperHours",
+                      readonly: "readonly"
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [
+                  _vm._v("\n              Project Management:\n              "),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3" }, [
+                  _c("input", {
+                    staticClass: "calculation_result",
+                    attrs: {
+                      type: "text",
+                      id: "TotalPMHours",
+                      name: "TotalPMHours",
+                      readonly: "readonly",
+                      value: ""
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [
+                  _vm._v(
+                    "\n              Total Project Hours:\n              "
+                  ),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3" }, [
+                  _c("input", {
+                    staticClass: "calculation_result",
+                    attrs: {
+                      type: "text",
+                      id: "TotalHours",
+                      name: "TotalHours",
+                      readonly: "readonly",
+                      value: ""
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [_vm._v("Price (DKK):")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3" }, [
+                  _c("input", {
+                    staticClass: "calculation_result",
+                    attrs: {
+                      type: "text",
+                      id: "TotalPrice",
+                      name: "TotalPriceExclVat",
+                      readonly: "readonly"
+                    }
+                  })
+                ])
+              ])
+            ])
+          ])
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "panel panel-default",
+        staticStyle: { "padding-bottom": "21px" }
+      },
+      _vm._l(_vm.tableRows, function(item) {
+        return _c("tr", [
+          _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(item.mail))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.date))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.adress))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.company))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.fliers))])
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        {
-          staticClass: "panel panel-default",
-          staticStyle: { "background-color": "#e3f2fd" }
-        },
-        [
-          _c("div", { staticClass: "panel-head" }, [
-            _c("label", { attrs: { for: "Offer" } }, [
-              _vm._v("Create a new offer")
+    return _c(
+      "div",
+      {
+        staticClass: "col-md-8 panel panel-default",
+        staticStyle: { "background-color": "#e3f2fd" }
+      },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "clientname" } }, [_vm._v("Client")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  attrs: { placeholder: "Pick a Client" }
+                },
+                [
+                  _c(
+                    "option",
+                    { attrs: { value: "", disabled: "", selected: "" } },
+                    [_vm._v("Pick a Client")]
+                  )
+                ]
+              )
             ]),
             _vm._v(" "),
-            _c("h2", [_vm._v("Create a new offer")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("div", { staticClass: "form-group col-md-3" }, [
-              _c("label", { attrs: { for: "clientname" } }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "roductname" } }, [
                 _vm._v("Project Name")
               ]),
               _vm._v(" "),
@@ -20968,57 +21299,25 @@ var staticRenderFns = [
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-5" }, [
-              _c("label", { attrs: { for: "clientname" } }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "productdesc" } }, [
                 _vm._v("Project description test")
               ]),
               _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
+              _c("textarea", {
+                staticStyle: { width: "100%", resize: "none" },
                 attrs: {
-                  type: "text",
+                  name: "test",
+                  id: "projectDescription",
+                  rows: "3",
                   placeholder: "Enter Project Description"
                 }
               })
             ])
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "panel panel-default" }, [
-        _c("div", { staticClass: "panel-body" }, [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("button", { staticClass: "float-right" }, [_vm._v("+")]),
-            _vm._v(" "),
-            _c("table", { staticClass: "table" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("td", [_vm._v("Title")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Disicription")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Estimate")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Save as template")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_c("input", { attrs: { type: "text" } })]),
-                  _vm._v(" "),
-                  _c("td", [_c("input", { attrs: { type: "text" } })]),
-                  _vm._v(" "),
-                  _c("td", [_c("input", { attrs: { type: "number" } })]),
-                  _vm._v(" "),
-                  _c("td", [_c("input", { attrs: { type: "checkbox" } })])
-                ])
-              ])
-            ])
-          ])
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -33753,8 +34052,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Emil\Desktop\Final Exam\ProjectOffers\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Emil\Desktop\Final Exam\ProjectOffers\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\emilm\OneDrive\Dokumenter\GitHub\ProjectOffers\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\emilm\OneDrive\Dokumenter\GitHub\ProjectOffers\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
