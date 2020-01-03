@@ -37,7 +37,17 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories"
+            "database/seeds/UserSeeder.php",
+            "database/seeds/ClientSeeder.php",
+            "database/seeds/OfferSeeder.php",
+            "database/seeds/TaskSeeder.php",
+            "database/seeds/TemplateSeeder.php",
+            "database/factories",
+            "app/Client.php",
+            "app/Offer.php",
+            "app/Task.php",
+            "app/Template.php",
+            "app/User.php"
         ]
     },
     "autoload-dev": {

@@ -27,28 +27,31 @@
       </div>
     </div>
 
-    <div
-      class="col-md-4 panel panel-default"
-      style="padding-bottom:93px; background-color: #e3f2fd;"
-    >
+    <div class="col-md-4 panel panel-default" style="background-color: #e3f2fd;">
       <!--21px-->
       <center>
         <h5 class="font-weight-bold">Total</h5>
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125">
             <div class="row">
-              <div class="col-3">
+              <div class="col-2">
                 Development Hours:
                 <br />
               </div>
-              <div class="col-3">
-                <input
+              <div class="col-2">
+                <!-- <input
                   type="text"
                   id="TotalDeveloperHours"
                   name="TotalDeveloperHours"
                   readonly="readonly"
                   class="calculation_result"
-                />
+                  style="margin-bottom:22px;"
+                />-->
+                <label
+                  id="TotalDeveloperHours"
+                  name="TotalDeveloperHours"
+                  style="margin-bottom:25px;"
+                >{{devTime}}</label>
               </div>
             </div>
             <div class="row">
@@ -57,14 +60,20 @@
                 <br />
               </div>
               <div class="col-3">
-                <input
+                <!-- <input
                   type="text"
                   id="TotalPMHours"
                   name="TotalPMHours"
                   readonly="readonly"
                   class="calculation_result"
+                  style="margin-bottom:22px;"
                   value
-                />
+                />-->
+                <label
+                  id="TotalPMHours"
+                  name="TotalPMHours"
+                  style="margin-bottom:25px;"
+                >{{manageTime}}</label>
               </div>
             </div>
             <div class="row">
@@ -73,26 +82,34 @@
                 <br />
               </div>
               <div class="col-3">
-                <input
+                <!-- <input
                   type="text"
                   id="TotalHours"
                   name="TotalHours"
                   readonly="readonly"
                   class="calculation_result"
+                  style="margin-bottom:22px;"
                   value
-                />
+                />-->
+                <label id="TotalHours" name="TotalHours" style="margin-bottom:25px;">{{totalTime}}</label>
               </div>
             </div>
             <div class="row">
               <div class="col-3">Price (DKK):</div>
               <div class="col-3">
-                <input
+                <!-- <input
                   type="text"
                   id="TotalPrice"
                   name="TotalPriceExclVat"
                   readonly="readonly"
                   class="calculation_result"
-                />
+                  style="margin-bottom:25px;"
+                />-->
+                <label
+                  id="TotalPriceExclVat"
+                  name="TotalPriceExclVat"
+                  style="margin-bottom:40px;"
+                >{{price}}</label>
               </div>
             </div>
           </div>
@@ -101,92 +118,106 @@
     </div>
 
     <div class="panel panel-default" style="padding-bottom:21px;">
-      <tr v-for="item in tableRows">
-        <th scope="row">{{ item.mail }}</th>
-        <td>{{ item.date }}</td>
-        <td>{{ item.adress }}</td>
-        <td>{{ item.company }}</td>
-        <td>{{ item.fliers }}</td>
-      </tr>
-      <!-- <a
-        href="#"
-        style="float:right;font-size:10px;"
-        data-toggle="modal"
-        data-target="#EstimateModal"
-      >Pick a Template</a>
-      <h6 class="border-bottom border-gray pb-2 mb-0">Estimate</h6>
-      <div class="panel-body media text-muted pt-3">
-        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <div class="d-flex justify-content-between align-items-center w-100">
-            <div class="content w-100">
-              <div class="row">
-                <div class="col-12">
-                  <table id="tblEstimate" style="width:100%" class="excel-table">
-                    <tr>
-                      <th class="col-sm-4">Title</th>
-                      <th class="col-sm-5">Discription</th>
-                      <th class="col-sm-2">Estimate</th>
-                      <th class="col-sm-1">Save</th>
-                      
-                    </tr>
-                  </table>
-                  
-                  <a
-                    href="#"
-                    style="float:right;margin-right:25px;"
-                    onfocus="addItem();"
-                  >
-                    <i class="fa fa-plus"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="my-3 p-3 bg-red rounded shadow-sm" style="display:none;">
-        <a href="#" style="float:right;font-size:10px;">Skjult information</a>
-        <h6 class="border-bottom border-gray pb-2 mb-0">Skjult information</h6>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <div class="content w-100">
-                <div>
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <textarea
-                        name="title"
-                        id="title"
-                        style="width:100%;resize: none;padding:5px;"
-                        value="test"
-                      ></textarea>
-                    </div>
-                    <div class="col-sm-5">
-                      <textarea
-                        name="description"
-                        id="description"
-                        style="width:100%;resize: none;padding:5px;"
-                        value="test"
-                      ></textarea>
-                    </div>
-                    <div class="col-sm-2">
-                      <textarea
-                        name="estimatehours"
-                        id="estimatehours"
-                        style="width:100%;resize: none;text-align:right;padding:5px;"
-                        value="12"
-                      ></textarea>
-                    </div>
-                    <div class="col-sm-1">
-                      <input name="save" id="save" style="width:100%;resize: none;padding:5px;" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>-->
+      <!-- <table id="tblEstimate" style="width:100%" class="excel-table">
+        <thead>
+          <tr>
+            <th class="col-sm-4">Title</th>
+            <th class="col-sm-5">Discription</th>
+            <th class="col-sm-1">Estimate</th>
+            <th class="col-sm-1">Save</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(task, k) in tasks" :key="k">
+            <td>
+              <input class="form-control" type="text" v-model="tasks.title" />
+            </td>
+            <td>
+              <input class="form-control" type="text" v-model="tasks.description" />
+            </td>
+            <td>
+              <input
+                class="form-control text-right"
+                type="number"
+                min="0"
+                step="1"
+                v-model="tasks.estimate"
+                @change="calculateLineTotal(tasks)"
+              />
+            </td>
+            <td>
+              <input class="form-control" type="checkbox" v-model="tasks.save" />
+            </td>
+            <td scope="row" class="trashIconContainer">
+              <i class="fa fa-trash col-sm-1" @click="deleteRow(k, tasks)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>-->
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-sm-4">Title</th>
+            <th class="col-sm-5">Discription</th>
+            <th class="col-sm-1">Estimate</th>
+            <th class="col-sm-1">Save</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(task, k) in tasks" :key="k">
+            <td>
+              <input class="form-control" type="text" v-model="tasks.title" />
+            </td>
+            <td>
+              <input class="form-control" type="text" v-model="tasks.description" />
+            </td>
+            <td>
+              <input
+                class="form-control text-right"
+                type="number"
+                min="0"
+                step="1"
+                v-model="tasks.estimate"
+              />
+            </td>
+            <td>
+              <input
+                class="form-control"
+                type="checkbox"
+              />
+            </td>
+            <td scope="row" class="trashIconContainer">
+              <i class="fa fa-trash" @click="deleteRow(k, tasks)"></i>
+            </td>
+          </tr>
+          <!-- <tr v-show="invoice_products.length === 0">
+            <td colspan="6">
+              <p class="text-center alert-danger p-2">No products added/available.</p>
+            </td>
+          </tr>-->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" class="text-right">DevTime</td>
+            <td class="text-right">{{devTime}}</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="text-right">Default Price</td>
+            <td class="text-right">{{default_price}}</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="text-right">Price</td>
+            <td class="text-right">{{price}}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <button type="button" class="btn btn-primary" @click="addNewRow">
+        <i class="fa fa-plus" style="padding-left:10px;"></i>
+        Add
+      </button>
+      <select class="form-control col-sm-1">
+        <option value disabled selected>Pick a Template Task</option>
+      </select>
     </div>
   </div>
 </template>
@@ -198,18 +229,35 @@ export default {
     return {
       projectName: "",
       projectDescription: "",
-      title: "",
-      description: "",
-      estimatehours: "",
-      save: "",
-      devTime: "",
-      manageTime: "",
-      totalTime: "",
-      price: "",
+
+      devTime: 0,
+      manageTime: 0,
+      totalTime: 0,
+      price: 0,
+      default_price: 970,
       results: [],
-      tableRows: [],
-      counter: 1,
-      estrownum: 1
+      tasks: [
+        {
+          title: "",
+          description: "",
+          estimate: 0,
+          save: false
+          //   line_total: 0
+        }
+      ],
+
+      invoice_subtotal: 0,
+      invoice_total: 0,
+      invoice_tax: 5,
+      invoice_products: [
+        {
+          product_no: "",
+          product_name: "",
+          product_price: "",
+          product_qty: ""
+          //   line_total: 0
+        }
+      ]
     };
   },
   methods: {
@@ -227,34 +275,98 @@ export default {
       this.totalTime = result.totalTime;
       this.price = result.price;
     },
-    // addTableRow: function() {
-    //   this.counter++;
-    //   this.tableRows.push("Table Row " + this.counter);
+    saveInvoice() {
+      console.log(JSON.stringify(this.tasks));
+    },
+    calculateTotal() {
+      var devtime, total;
+      //   devtime = this.tasks.reduce(function(sum, product) {
+      //     var lineTotal = parseFloat(product.line_total);
+      //     if (!isNaN(lineTotal)) {
+      //       return sum + lineTotal;
+      //     }
+      //   }, 0);
+
+      this.devTime = devtime.toFixed(2);
+
+      total = devtime * this.default_price;
+      total = parseFloat(total);
+      if (!isNaN(total)) {
+        this.price = total.toFixed(2);
+      } else {
+        this.price = "0";
+      }
+    },
+    // calculateLineTotal(task) {
+    //   var total = parseFloat(task.estimate);
+    //   if (!isNaN(total)) {
+    //     tasks.line_total = total.toFixed(2);
+    //   }
+    //   this.calculateTotal();
     // },
-    addItem() {
-      var my_object = {
-        title: this.title,
-        description: this.description,
-        estimatehours: this.estimatehours,
-        save: this.save
-      };
-      this.tableRows.push(my_object);
-
-      this.title = "";
-      this.description = "";
-      this.estimatehours = "";
-      this.save = "";
+    deleteRow(index, task) {
+      var idx = this.tasks.indexOf(task);
+      console.log(idx, index);
+      if (idx > -1) {
+        this.tasks.splice(idx, 1);
+      }
+      this.calculateTotal();
+    },
+    addNewRow() {
+      this.tasks.push({
+        title: "",
+        description: "",
+        estimate: "",
+        save: false
+      });
     }
-    // addEstimateRow() {
-    //   estrownum++;
+    // saveInvoice() {
+    //   console.log(JSON.stringify(this.invoice_products));
+    // },
+    // calculateTotal() {
+    //   var subtotal, total;
+    //   subtotal = this.invoice_products.reduce(function(sum, product) {
+    //     var lineTotal = parseFloat(product.line_total);
+    //     if (!isNaN(lineTotal)) {
+    //       return sum + lineTotal;
+    //     }
+    //   }, 0);
 
-    //   $("#tblEstimate > tbody:last-child").append(
-    //     '<tr><td><input placeholder="Beskriv ydelse her (max 35 tegn)" id="estlinetext_manuel_' +
-    //       estrownum +
-    //       '" type="text" value="" class="estimate_text" onchange="calculate();" maxlength="35">'+
-    //       '</td><td><input id="estlinevalue_manuel" type="text" value="0" class="estimate_value" onchange="calculate();" style="text-align:right;"></td></tr>'
-    //   );
-    //   $("#estlinetext_manuel_" + estrownum).focus();
+    //   this.invoice_subtotal = subtotal.toFixed(2);
+
+    //   total = subtotal * (this.invoice_tax / 100) + subtotal;
+    //   total = parseFloat(total);
+    //   if (!isNaN(total)) {
+    //     this.invoice_total = total.toFixed(2);
+    //   } else {
+    //     this.invoice_total = "0.00";
+    //   }
+    // },
+    // calculateLineTotal(invoice_product) {
+    //   var total =
+    //     parseFloat(invoice_product.product_price) *
+    //     parseFloat(invoice_product.product_qty);
+    //   if (!isNaN(total)) {
+    //     invoice_product.line_total = total.toFixed(2);
+    //   }
+    //   this.calculateTotal();
+    // },
+    // deleteRow(index, invoice_product) {
+    //   var idx = this.invoice_products.indexOf(invoice_product);
+    //   console.log(idx, index);
+    //   if (idx > -1) {
+    //     this.invoice_products.splice(idx, 1);
+    //   }
+    //   this.calculateTotal();
+    // },
+    // addNewRow() {
+    //   this.invoice_products.push({
+    //     product_no: "",
+    //     product_name: "",
+    //     product_price: "",
+    //     product_qty: "",
+    //     line_total: 0
+    //   });
     // }
   }
 };

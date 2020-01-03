@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 
-// use App\Project\Enum\AccountTypeEnum;
-// use App\Project\User\User;
 use Illuminate\Http\Request;
 use App\Project\Client\Client;
-// use App\Project\Project\Project;
-use App\Project\Address\Address;
-// use App\Project\Contact\Contact;
 use Illuminate\Support\Facades\DB;
-// use App\Project\Task\Task;
 
 class ClientController extends Controller
 {
