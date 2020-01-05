@@ -42,11 +42,14 @@ Route::post('/createClient', 'ClientController@store')->name('client.store');
 // });
 
 // Offer
-// Route::get('/createOffer', 'offerController@index')->name('createOffer');
-Route::get('/viewOffer', 'OfferController@index')->name('viewOffer');
-Route::get('createOffer', function () {
-    return view('offer/createOffer');
-});
+Route::get('/createOffer', 'OfferController@create')->name('offer.createOffer');
+Route::post('/createOffer', 'OfferController@store')->name('offer.store');
+Route::get('/viewOffer', 'OfferController@index')->name('offer.viewOffer');
+Route::get('/viewOffer/{offer}', 'OfferController@getOffer')->name('viewOffer');
+Route::get('/viewTask/{task}', 'OfferController@getTask')->name('viewTask');
+// Route::get('createOffer', function () {
+//     return view('offer/createOffer');
+// });
 // Route::get('viewOffer', function () {
 //     return view('offer/viewOffer');
 // });

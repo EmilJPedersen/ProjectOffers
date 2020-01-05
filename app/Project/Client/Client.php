@@ -20,7 +20,7 @@ class Client extends Model
      */
     protected $table = 'client';
 
-    // protected $primaryKey = 'id';
+    protected $primaryKey = 'OID';
     // protected $appends = [
     //     'path',
 	// 	'accountTypeName'

@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">	
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -29,7 +29,7 @@
         <nav class="navbar" style="background-color: #e3f2fd;">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a href="{{ url('/') }}"><img src="img/logo.svg" alt="error" height="50"></a>
+                    <a href="{{ url('/') }}"><img src="../img/logo.svg" alt="error" height="50"></a>
                 </div>
                 <ul type="button" class="nav navbar-nav">
                     <li class="dropdown">
@@ -59,7 +59,7 @@
             @yield('content')
         </main>
     </div>
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 
 </html>

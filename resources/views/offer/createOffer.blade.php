@@ -6,5 +6,8 @@
 @endsection
 
 @section('content')
+{{-- {{Form::open(array('action' => 'OfferController@store'))}}
+    <offer-create></offer-create>
+{{ Form::close() }} --}}
 <offer-create></offer-create>
 @endsection

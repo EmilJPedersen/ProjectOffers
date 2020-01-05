@@ -16,4 +16,11 @@ class Template extends Model
     protected $table = 'template';
 
     protected $primaryKey = 'TempID';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }

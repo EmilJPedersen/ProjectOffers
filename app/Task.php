@@ -16,4 +16,11 @@ class Task extends Model
     protected $table = 'task';
 
     protected $primaryKey = 'TID';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }

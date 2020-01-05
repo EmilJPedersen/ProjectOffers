@@ -15,7 +15,7 @@
                             <div class="card-header mb-1">
                                 <a href="{{ url('createOffer') }}" style=""
                                     class="btn text-white btn-space btn-primary float-right"><i
-                                        class="icon icon-left mdi mdi-plus"></i> Create New Offer</a>
+                                        class="icon icon-left mdi mdi-plus"></i> Edit Offer</a>
                             </div>
                         </div>
                     </form>
@@ -24,27 +24,21 @@
                     <table class="row-clickable table table-striped table-hover">
                         <thead>
                             <tr>
+                                <th>TID test</th>
+                                <th>Task Name</th>
+                                <th>Task Description</th>
+                                <th>Estimate</th>
                                 <th>OID</th>
-                                <th>Offer_Name</th>
-                                <th>Offer Description</th>
-                                <th>CVR</th>
-                                <th>Link</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($offers as $offer)
+                            @foreach($tasks as $task)
                             <tr>
-                                <td>{{ $offer->OID }}</td>
-                                <td>{{ $offer->Offer_Name}}</td>
-                                <td>{{ $offer->Offer_Description}}</td>
-                                <td>{{ $offer->CVR }}</td>
-                                <td><a href="{{ route('viewTask', $offer->OID) }}" style=""
-                                    class="btn text-white btn-space btn-primary float-right"><i
-                                        class="icon icon-left mdi mdi-plus"></i> Tasks</a></td>
-
-                                @if (count($offers) <= 0) <tr class='clickable-row' data-href='url://'>
-                                    <td colspan="3" style="text-align: center;">No results</td>
-                                @endif
+                                <td>{{ $task->TID }}</td>
+                                <td>{{ $task->Task_Name}}</td>
+                                <td>{{ $task->Task_Description}}</td>
+                                <td>{{ $task->Estimate }}</td>
+                                <td>{{ $task->OID }}</td>
                             </tr>
                             @endforeach
                         </tbody>

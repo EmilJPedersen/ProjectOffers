@@ -15,4 +15,11 @@ class Offer extends Model
      * @var string
      */
     protected $table = 'offer';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }

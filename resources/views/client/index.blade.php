@@ -36,7 +36,9 @@
                                 <td>{{ $client->CVR }}</td>
                                 <td>{{ $client->Client_Name}}</td>
                                 <td>{{ $client->Default_Price}}</td>
-                                <td>Link to the clients offers</td>
+                                <td><a href="{{ route('viewTask', $client->CVR) }}" style=""
+                                    class="btn text-white btn-space btn-primary float-right"><i
+                                        class="icon icon-left mdi mdi-plus"></i> Tasks</a></td>
 
                                 @if (count($clients) <= 0) <tr class='clickable-row' data-href='url://'>
                                     <td colspan="3" style="text-align: center;">No results</td>
