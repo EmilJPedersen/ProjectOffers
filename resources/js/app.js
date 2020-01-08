@@ -16,11 +16,11 @@ window.Vue = require('vue');
 
  // Client
 Vue.component('client-create', require('./components/Client/Create.vue').default);
-Vue.component('client-view', require('./components/Client/view.vue').default);
+// Vue.component('client-view', require('./components/Client/view.vue').default);
 
 // Offer
 Vue.component('offer-create', require('./components/Offer/Create.vue').default);
-Vue.component('offer-view', require('./components/Offer/view.vue').default);
+// Vue.component('offer-view', require('./components/Offer/view.vue').default);
 
 // Other
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);

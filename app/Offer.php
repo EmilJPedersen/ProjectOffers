@@ -16,6 +16,8 @@ class Offer extends Model
      */
     protected $table = 'offer';
 
+    protected $primaryKey = 'TID';
+
     /**
      * Indicates if the model should be timestamped.
      *

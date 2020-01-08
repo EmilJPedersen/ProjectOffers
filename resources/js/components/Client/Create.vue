@@ -56,13 +56,13 @@ export default {
     };
   },
   methods: {
-    selectResult(result) {
-      this.results = [];
+    // selectResult(result) {
+    //   this.results = [];
 
-      this.name = result.name
-      this.cvr = result.cvrNummer;
-      this.price = result.default_price;
-    }
+    //   this.name = result.name
+    //   this.cvr = result.cvrNummer;
+    //   this.price = result.default_price;
+    // }
   }
 };
 </script>

@@ -16,11 +16,11 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::orderBy('CVR');
+        $clients = Client::orderBy('Client_Name');
 
         $clients = $clients->get();
 
-        return view('client.index', compact('clients'));
+        return view('client.viewClient', compact('clients'));
     }
 
     public function show(Client $client)

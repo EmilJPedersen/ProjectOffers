@@ -16,6 +16,9 @@
                                 <a href="{{ url('createOffer') }}" style=""
                                     class="btn text-white btn-space btn-primary float-right"><i
                                         class="icon icon-left mdi mdi-plus"></i> Edit Offer</a>
+                                <a href="{{ url('createOffer') }}" style="float: right"
+                                    class="btn text-white btn-space btn-primary float-right"><i
+                                        class="icon icon-left mdi mdi-plus"></i> Print as PDF</a>
                             </div>
                         </div>
                     </form>
@@ -29,6 +32,7 @@
                                 <th>Task Description</th>
                                 <th>Estimate</th>
                                 <th>OID</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

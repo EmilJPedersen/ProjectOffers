@@ -13,9 +13,6 @@ class OfferController extends Controller
      */
     public function index()
     {
-        // $offers = Offer::orderBy('OID');
-
-        // $offes = $offers->get();
         $offers = DB::table('offer')->get();
 
         if ($offers == null) {
@@ -34,8 +31,14 @@ class OfferController extends Controller
 
     public function getOffer($resault)
     {
-        $tasks = DB::table('offer')->where('CVR', $resault)->get();
-        return view('offer.viewOffer', compact('offer'));
+        $offers = DB::table('offer')->where('CVR', $resault)->get();
+        return view('offer.viewOffer', compact('offers'));
+    }
+
+    public function getTemplates()
+    {
+        $templates = DB::table('template')->get();
+        return view('offer.viewTemplate', compact('templates'));
     }
 
     public function create()
@@ -61,15 +64,15 @@ class OfferController extends Controller
         $offer->Offer_Description = $request->projectDescription;
         $offer->CVR = $request->cvr;
 
-        // foreach($request->tasks as $task){
-        //     $task = DB::table('Task')->get();
-        //     $task->Task_Name = $request->tasks->title;
-        //     $task->Task_Description = $request->tasks->description;
-        //     $task->Estimate = $request->tasks->estimate;
+        foreach($request->tasks as $task){
+            $task = DB::table('Task')->get();
+            $task->Task_Name = $request->tasks->title;
+            $task->Task_Description = $request->tasks->description;
+            $task->Estimate = $request->tasks->estimate;
 
-        //     $offer = DB::table('offer')->get();
-        //     $task->Task_Name = $offer->OID;
-        // }
+            $offer = DB::table('offer')->get();
+            $task->Task_Name = $offer->OID;
+        }
 
         if($request->save == true){
             $template = DB::table('Template')->get();
