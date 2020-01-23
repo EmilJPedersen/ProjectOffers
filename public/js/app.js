@@ -2099,49 +2099,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      cvr: "",
+      //   cvr: "",
       projectName: "",
       projectDescription: "",
       devTime: 0,
       manageTime: 0,
       totalTime: 0,
       price: 0,
-      default_price: 970,
-      results: [],
+      //   default_price: 970,
       tasks: [{
         title: "",
         description: "",
         estimate: 0,
         save: false
+      }],
+      templates: [{
+        title: "",
+        description: "",
+        estimate: 0
+      }],
+      clients: [{
+        cvr: "",
+        default_price: 970
       }]
     };
   },
   methods: {
     getClient: function getClient() {
-      this.cvr = 123456789;
-      this.default_price = 970;
+      this.clients.cvr = 123456789;
+      this.clients.default_price = 970;
     },
     getTemplate: function getTemplate() {},
-    saveOffer: function saveOffer() {
-      foreach(task in tasks);
-      {} //   dd("test");
-      //   this.devTime = result.devTime;
-      //   this.manageTime = result.manageTime;
-      //   this.totalTime = result.totalTime;
-      //   this.price = result.price;
-      //   this.title = result.title;
-      //   this.description = result.description;
-      //   this.estimatehours = result.estimatehours;
-      //   this.save = result.save;
-    },
     calculateTotal: function calculateTotal() {
-      var devtime, total;
+      var devtime, managetime, totaltime, total;
       devtime = this.tasks.reduce(function (sum, task) {
         var estimate = parseFloat(task.estimate);
 
@@ -2149,13 +2143,20 @@ __webpack_require__.r(__webpack_exports__);
           return sum + estimate;
         }
       }, 0);
-      this.devTime = devtime.toFixed(0);
-      total = devtime * this.default_price;
-      total = parseFloat(total);
+      var price = this.clients.default_price;
+      managetime = devtime / 100 * 20;
+      totaltime = (devtime + managetime).toFixed(0);
+      total = totaltime * price;
 
       if (!isNaN(total)) {
+        this.devTime = devtime;
+        this.manageTime = managetime.toFixed(0);
+        this.totalTime = totaltime;
         this.price = total;
       } else {
+        this.devTime = "error";
+        this.manageTime = "error";
+        this.totalTime = "error";
         this.price = "error";
       }
     },
@@ -20594,440 +20595,407 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.saveOffer($event)
-        }
-      }
-    },
-    [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          {
-            staticClass: "col-md-8 panel panel-default",
-            staticStyle: { "background-color": "#e3f2fd" }
-          },
-          [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "panel-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "clientname" } }, [
-                    _vm._v("Client")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.cvr,
-                        expression: "cvr"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Enter Client CVR" },
-                    domProps: { value: _vm.cvr },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.cvr = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "roductname" } }, [
-                    _vm._v("Project Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.projectName,
-                        expression: "projectName"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Enter Project Name" },
-                    domProps: { value: _vm.projectName },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.projectName = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "productdesc" } }, [
-                    _vm._v("Project description")
-                  ]),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.projectDescription,
-                        expression: "projectDescription"
-                      }
-                    ],
-                    staticStyle: { width: "100%", resize: "none" },
-                    attrs: {
-                      name: "test",
-                      id: "projectDescription",
-                      rows: "3",
-                      placeholder: "Enter Project Description"
-                    },
-                    domProps: { value: _vm.projectDescription },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.projectDescription = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "col-md-4 panel panel-default",
-            staticStyle: { "background-color": "#e3f2fd" }
-          },
-          [
-            _c("center", [
-              _c("h5", { staticClass: "font-weight-bold" }, [_vm._v("Total")]),
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      {
+        staticClass: "col-md-8 panel panel-default",
+        staticStyle: { "background-color": "#e3f2fd" }
+      },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "clientname" } }, [_vm._v("Client")]),
               _vm._v(" "),
-              _c("div", { staticClass: "media text-muted pt-3" }, [
-                _c(
-                  "div",
-                  { staticClass: "media-body pb-3 mb-0 small lh-125" },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-2" }, [
-                        _vm._v(
-                          "\n                Development Hours:\n                "
-                        ),
-                        _c("br")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-2" }, [
-                        _c(
-                          "label",
-                          {
-                            staticStyle: { "margin-bottom": "25px" },
-                            attrs: {
-                              id: "TotalDeveloperHours",
-                              name: "TotalDeveloperHours"
-                            }
-                          },
-                          [_vm._v(_vm._s(_vm.devTime))]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-3" }, [
-                        _vm._v(
-                          "\n                Project Management:\n                "
-                        ),
-                        _c("br")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-3" }, [
-                        _c(
-                          "label",
-                          {
-                            staticStyle: { "margin-bottom": "25px" },
-                            attrs: { id: "TotalPMHours", name: "TotalPMHours" }
-                          },
-                          [_vm._v(_vm._s(_vm.manageTime))]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-3" }, [
-                        _vm._v(
-                          "\n                Total Project Hours:\n                "
-                        ),
-                        _c("br")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-3" }, [
-                        _c(
-                          "label",
-                          {
-                            staticStyle: { "margin-bottom": "25px" },
-                            attrs: { id: "TotalHours", name: "TotalHours" }
-                          },
-                          [_vm._v(_vm._s(_vm.totalTime))]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-3" }, [
-                        _vm._v("Price (DKK):")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-3" }, [
-                        _c(
-                          "label",
-                          {
-                            staticStyle: { "margin-bottom": "40px" },
-                            attrs: {
-                              id: "TotalPriceExclVat",
-                              name: "TotalPriceExclVat"
-                            }
-                          },
-                          [_vm._v(_vm._s(_vm.price))]
-                        )
-                      ])
+              _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  attrs: { name: "cvrNumber", id: "cvrNumber" }
+                },
+                [
+                  _c("option", { attrs: { disable: "" } }, [
+                    _vm._v("Select CVR Number")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.clients, function(client, k) {
+                    return _c("option", { key: k }, [
+                      _vm._v(_vm._s(client.cvr))
                     ])
-                  ]
-                )
-              ])
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "panel panel-default",
-            staticStyle: { "padding-bottom": "21px" }
-          },
-          [
-            _c(
-              "select",
-              {
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "roductname" } }, [
+                _vm._v("Project Name")
+              ]),
+              _vm._v(" "),
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.cvr,
-                    expression: "cvr"
+                    value: _vm.projectName,
+                    expression: "projectName"
                   }
                 ],
-                staticClass: "form-control col-md-6",
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Enter Project Name" },
+                domProps: { value: _vm.projectName },
                 on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.cvr = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.projectName = $event.target.value
                   }
                 }
-              },
-              [
-                _c(
-                  "option",
-                  { attrs: { value: "", disabled: "", selected: "" } },
-                  [_vm._v("Pick a Template Task")]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("table", { staticClass: "table" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.tasks, function(task, k) {
-                  return _c("tr", { key: k }, [
-                    _c("td", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: task.title,
-                            expression: "task.title"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text" },
-                        domProps: { value: task.title },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(task, "title", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: task.description,
-                            expression: "task.description"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text" },
-                        domProps: { value: task.description },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(task, "description", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: task.estimate,
-                            expression: "task.estimate"
-                          }
-                        ],
-                        staticClass: "form-control text-right",
-                        attrs: { type: "number", min: "0", step: "1" },
-                        domProps: { value: task.estimate },
-                        on: {
-                          change: function($event) {
-                            return _vm.calculateTotal(task)
-                          },
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(task, "estimate", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: task.save,
-                            expression: "task.save"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "checkbox" },
-                        domProps: {
-                          checked: Array.isArray(task.save)
-                            ? _vm._i(task.save, null) > -1
-                            : task.save
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = task.save,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = null,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(task, "save", $$a.concat([$$v]))
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    task,
-                                    "save",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(task, "save", $$c)
-                            }
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      {
-                        staticClass: "trashIconContainer",
-                        attrs: { scope: "row" }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa fa-trash",
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteRow(k, task)
-                            }
-                          }
-                        })
-                      ]
-                    )
-                  ])
-                }),
-                0
-              )
+              })
             ]),
             _vm._v(" "),
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  staticStyle: { "margin-left": "10px" },
-                  attrs: { type: "button" },
-                  on: { click: _vm.addNewRow }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-plus" }),
-                  _vm._v(" Add\n        ")
-                ]
-              ),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "productdesc" } }, [
+                _vm._v("Project description")
+              ]),
               _vm._v(" "),
-              _vm._m(1)
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.projectDescription,
+                    expression: "projectDescription"
+                  }
+                ],
+                staticStyle: { width: "100%", resize: "none" },
+                attrs: {
+                  name: "test",
+                  id: "projectDescription",
+                  rows: "3",
+                  placeholder: "Enter Project Description"
+                },
+                domProps: { value: _vm.projectDescription },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.projectDescription = $event.target.value
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "col-md-4 panel panel-default",
+        staticStyle: { "background-color": "#e3f2fd" }
+      },
+      [
+        _c("center", [
+          _c("h5", { staticClass: "font-weight-bold" }, [_vm._v("Total")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "media text-muted pt-3" }, [
+            _c("div", { staticClass: "media-body pb-3 mb-0 small lh-125" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-2" }, [
+                  _vm._v("\n              Development Hours:\n              "),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-2" }, [
+                  _c(
+                    "label",
+                    {
+                      staticStyle: { "margin-bottom": "25px" },
+                      attrs: {
+                        id: "TotalDeveloperHours",
+                        name: "TotalDeveloperHours"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.devTime))]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [
+                  _vm._v("\n              Project Management:\n              "),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticStyle: { "margin-bottom": "25px" },
+                      attrs: { id: "TotalPMHours", name: "TotalPMHours" }
+                    },
+                    [_vm._v(_vm._s(_vm.manageTime))]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [
+                  _vm._v(
+                    "\n              Total Project Hours:\n              "
+                  ),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticStyle: { "margin-bottom": "25px" },
+                      attrs: { id: "TotalHours", name: "TotalHours" }
+                    },
+                    [_vm._v(_vm._s(_vm.totalTime))]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [_vm._v("Price (DKK):")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticStyle: { "margin-bottom": "40px" },
+                      attrs: {
+                        id: "TotalPriceExclVat",
+                        name: "TotalPriceExclVat"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.price))]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "panel panel-default",
+        staticStyle: { "padding-bottom": "21px" }
+      },
+      [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.cvr,
+                expression: "cvr"
+              }
+            ],
+            staticClass: "form-control col-md-6",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.cvr = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "", disabled: "", selected: "" } }, [
+              _vm._v("Pick a Template Task")
             ])
           ]
-        )
-      ])
-    ]
-  )
+        ),
+        _vm._v(" "),
+        _c("table", { staticClass: "table" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.tasks, function(task, k) {
+              return _c("tr", { key: k }, [
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: task.title,
+                        expression: "task.title"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: task.title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(task, "title", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: task.description,
+                        expression: "task.description"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: task.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(task, "description", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: task.estimate,
+                        expression: "task.estimate"
+                      }
+                    ],
+                    staticClass: "form-control text-right",
+                    attrs: { type: "number", min: "0", step: "1" },
+                    domProps: { value: task.estimate },
+                    on: {
+                      change: function($event) {
+                        return _vm.calculateTotal(task)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(task, "estimate", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: task.save,
+                        expression: "task.save"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(task.save)
+                        ? _vm._i(task.save, null) > -1
+                        : task.save
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = task.save,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && _vm.$set(task, "save", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                task,
+                                "save",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(task, "save", $$c)
+                        }
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    staticClass: "trashIconContainer",
+                    attrs: { scope: "row" }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fa fa-trash",
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteRow(k, task)
+                        }
+                      }
+                    })
+                  ]
+                )
+              ])
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              staticStyle: { "margin-left": "10px" },
+              attrs: { type: "button" },
+              on: { click: _vm.addNewRow }
+            },
+            [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Add\n      ")]
+          ),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -21057,7 +21025,7 @@ var staticRenderFns = [
         staticStyle: { "margin-right": "10px", float: "right" },
         attrs: { type: "submit" }
       },
-      [_c("i", { staticClass: "fa fa-save" }), _vm._v(" Save\n        ")]
+      [_c("i", { staticClass: "fa fa-save" }), _vm._v(" Save test\n      ")]
     )
   }
 ]

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+use App\Template;
+use App\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,7 +45,11 @@ class OfferController extends Controller
 
     public function create()
     {
-        return view('offer.createOffer');
+        // $templates = DB::table('template')->get();
+        // $clients = DB::table('client')->get();
+        $clients = new Client;
+        $templates = new Template;
+        return view('offer.createOffer', compact('clients', 'templates'));
     }
 
     public function store(Request $request){
@@ -64,22 +70,27 @@ class OfferController extends Controller
         $offer->Offer_Description = $request->projectDescription;
         $offer->CVR = $request->cvr;
 
-        foreach($request->tasks as $task){
-            $task = DB::table('Task')->get();
-            $task->Task_Name = $request->tasks->title;
-            $task->Task_Description = $request->tasks->description;
-            $task->Estimate = $request->tasks->estimate;
+        $tasks = $request->tasks;
 
-            $offer = DB::table('offer')->get();
+        foreach($request as $task){
+            $task = DB::table('task')->get();
+            $task->Task_Name = $request->title;
+            $task->Task_Description = $request->description;
+            $task->Estimate = $request->estimate;
+
+            $offer = DB::table('offer')->orderBy('OID', 'DESC')->first();
             $task->Task_Name = $offer->OID;
+
+            $task->save();
+
+            if($request->save == true){
+                $template = DB::table('Template')->get();
+                $template->Task_Name = $request->tasks->title;
+                $template->Task_Description = $request->tasks->description;
+                $template->Estimate = $request->tasks->estimate;
+            }
         }
 
-        if($request->save == true){
-            $template = DB::table('Template')->get();
-            $template->Task_Name = $request->tasks->title;
-            $template->Task_Description = $request->tasks->description;
-            $template->Estimate = $request->tasks->estimate;
-        }
 
         if($offer->save())
         {

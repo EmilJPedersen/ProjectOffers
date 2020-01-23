@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    use UtfDecoder;
-
     /**
      * The table associated with the model.
      *
@@ -18,10 +16,5 @@ class Client extends Model
 
     protected $primaryKey = 'OID';
 
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
     public $timestamps = false;
 }

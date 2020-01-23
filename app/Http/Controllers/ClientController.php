@@ -54,14 +54,13 @@ class ClientController extends Controller
             'price' => 'required'
         ]);
         $client = new Client;
-        // $client = DB::table('client')->get();
         $client->CVR = $request->cvr;
         $client->Client_Name = $request->name;
         $client->Default_Price = $request->price;
 
         if($client->save())
         {
-            return redirect()->route('client.index'); //client.show
+            return redirect()->route('client.index');
         }else{
             $error = "Client not created!";
             return view('client.createClient', compact('error'));
