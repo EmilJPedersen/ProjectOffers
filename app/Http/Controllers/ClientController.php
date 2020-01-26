@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-// use App\Project\Client\Client;
 use App\Client;
 use Illuminate\Support\Facades\DB;
 
@@ -48,6 +47,7 @@ class ClientController extends Controller
 
     public function store(Request $request){
         //validate data
+        // dd($request);
         $validatedData = $request->validate([
             'cvr' => 'required',
             'name' => 'required|max:255',

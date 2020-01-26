@@ -44,6 +44,7 @@ Route::get('/createOffer', 'OfferController@create')->name('offer.createOffer');
 Route::post('/createOffer', 'OfferController@store')->name('offer.store');
 Route::get('/viewOffer', 'OfferController@index')->name('offer.viewOffer');
 Route::get('/viewOffer/{cvr}', 'OfferController@getOffer')->name('viewOffer');
+Route::get('/viewOffer/{cvr}/pdf', 'PDFController@pdf')->name('viewOffer');
 Route::get('/viewTask/{task}', 'OfferController@getTask')->name('viewTask');
 Route::get('/viewTemplate', 'OfferController@getTemplates')->name('offer.viewTemplate');
 

@@ -45,10 +45,11 @@ class OfferController extends Controller
 
     public function create()
     {
-        // $templates = DB::table('template')->get();
-        // $clients = DB::table('client')->get();
-        $clients = new Client;
-        $templates = new Template;
+        $templates = DB::table('template')->get();
+        $clients = DB::table('client')->get();
+        // $clients = new Client;
+        // $templates = new Template;
+        // dd($templates, $clients);
         return view('offer.createOffer', compact('clients', 'templates'));
     }
 
@@ -57,42 +58,37 @@ class OfferController extends Controller
         //     'projectName' => 'required',
         //     'projectDescription' => 'required',
         //     'cvr' => 'required',
-        //     'projectName' => 'required',
-        //     'projectName' => 'required',
-        //     'projectName' => 'required',
-        //     'projectName' => 'required',
-        //     'projectName' => 'required',
-        //     'projectName' => 'required',
         // ]);
-        // $offer = DB::table('offer')->get();
-        $offer = new Offer();
+        $offer = DB::table('offer')->get();
+        // $offer = new Offer();
         $offer->Offer_Name = $request->projectName;
         $offer->Offer_Description = $request->projectDescription;
         $offer->CVR = $request->cvr;
 
         $tasks = $request->tasks;
-
-        foreach($request as $task){
-            $task = DB::table('task')->get();
-            $task->Task_Name = $request->title;
-            $task->Task_Description = $request->description;
-            $task->Estimate = $request->estimate;
+            dd($request);
+        foreach($request as $t){
+            $task = $t->tasks;
+            $task_ = DB::table('task')->get();
+            $task_->Task_Name = $task->title;
+            $task_->Task_Description = $task->description;
+            $task_->Estimate = $task->estimate;
 
             $offer = DB::table('offer')->orderBy('OID', 'DESC')->first();
-            $task->Task_Name = $offer->OID;
+            $task_->Task_Name = $offer->OID;
 
-            $task->save();
+            // $task->save();
 
-            if($request->save == true){
+            if($task->save == true){
                 $template = DB::table('Template')->get();
-                $template->Task_Name = $request->tasks->title;
-                $template->Task_Description = $request->tasks->description;
-                $template->Estimate = $request->tasks->estimate;
+                $template->Task_Name = $task->title;
+                $template->Task_Description = $task->description;
+                $template->Estimate = $task->estimate;
             }
         }
 
 
-        if($offer->save())
+        if($offer->save() || $task->save())
         {
             return redirect()->route('offer.viewOffer'); //client.show
         }else{

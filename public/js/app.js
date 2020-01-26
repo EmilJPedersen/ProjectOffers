@@ -2097,10 +2097,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      CVR: "",
       projectName: "",
       projectDescription: "",
       devTime: 0,
@@ -2114,15 +2124,21 @@ __webpack_require__.r(__webpack_exports__);
         estimate: 0,
         save: false
       }],
-      templates: [{
-        title: "",
-        description: "",
-        estimate: 0
-      }],
-      clients: [{
-        cvr: "",
-        default_price: 970
-      }]
+      //   templates: [
+      //     {
+      //       title: "",
+      //       description: "",
+      //       estimate: 0
+      //     }
+      //   ],
+      templates: [],
+      clients: [] //   clients: [
+      //     {
+      //       cvr: "",
+      //       default_price: 970
+      //     }
+      //   ]
+
     };
   },
   methods: {
@@ -2174,6 +2190,14 @@ __webpack_require__.r(__webpack_exports__);
         estimate: 0,
         save: false
       });
+    },
+    addTemplate: function addTemplate() {
+      this.tasks.push({
+        title: "",
+        description: "",
+        estimate: 0,
+        save: false
+      });
     }
   }
 });
@@ -2192,7 +2216,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.search[data-v-5a9adb85] {\r\n  position: relative;\n}\n.searchIndicator[data-v-5a9adb85] {\r\n  position: absolute;\r\n  top: 5px;\r\n  right: 20px;\n}\n.searchResults[data-v-5a9adb85] {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 40px;\r\n  min-width: 250px;\r\n  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\r\n  z-index: 99;\n}\n.searchResults ul li[data-v-5a9adb85] {\r\n  cursor: pointer;\n}\n.searchResults li span[data-v-5a9adb85] {\r\n  font-size: 0.8rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.search[data-v-5a9adb85] {\n  position: relative;\n}\n.searchIndicator[data-v-5a9adb85] {\n  position: absolute;\n  top: 5px;\n  right: 20px;\n}\n.searchResults[data-v-5a9adb85] {\n  position: absolute;\n  left: 0;\n  top: 40px;\n  min-width: 250px;\n  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\n  z-index: 99;\n}\n.searchResults ul li[data-v-5a9adb85] {\n  cursor: pointer;\n}\n.searchResults li span[data-v-5a9adb85] {\n  font-size: 0.8rem;\n}\n", ""]);
 
 // exports
 
@@ -20605,25 +20629,27 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "clientname" } }, [_vm._v("Client")]),
               _vm._v(" "),
-              _c(
-                "select",
-                {
-                  staticClass: "form-control",
-                  attrs: { name: "cvrNumber", id: "cvrNumber" }
-                },
-                [
-                  _c("option", { attrs: { disable: "" } }, [
-                    _vm._v("Select CVR Number")
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.clients, function(client, k) {
-                    return _c("option", { key: k }, [
-                      _vm._v(_vm._s(client.cvr))
-                    ])
-                  })
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.CVR,
+                    expression: "CVR"
+                  }
                 ],
-                2
-              )
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Enter Client CVR" },
+                domProps: { value: _vm.CVR },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.CVR = $event.target.value
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -20670,7 +20696,6 @@ var render = function() {
                 ],
                 staticStyle: { width: "100%", resize: "none" },
                 attrs: {
-                  name: "test",
                   id: "projectDescription",
                   rows: "3",
                   placeholder: "Enter Project Description"
@@ -20824,8 +20849,15 @@ var render = function() {
           [
             _c("option", { attrs: { value: "", disabled: "", selected: "" } }, [
               _vm._v("Pick a Template Task")
-            ])
-          ]
+            ]),
+            _vm._v("¨\n      "),
+            _vm._l(_vm.templates, function(template, k) {
+              return _c("option", { key: k, on: { click: _vm.addTemplate } }, [
+                _vm._v(_vm._s(template.Template_Name))
+              ])
+            })
+          ],
+          2
         ),
         _vm._v(" "),
         _c("table", { staticClass: "table" }, [
@@ -20991,6 +21023,12 @@ var render = function() {
           _vm._m(1)
         ])
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn btn-space btn-primary", attrs: { type: "submit" } },
+      [_vm._v("Create Client")]
     )
   ])
 }
@@ -33499,8 +33537,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\emilm\OneDrive\Dokumenter\GitHub\ProjectOffers\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\emilm\OneDrive\Dokumenter\GitHub\ProjectOffers\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Emil\Desktop\Final Exam\ProjectOffers\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Emil\Desktop\Final Exam\ProjectOffers\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

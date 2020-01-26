@@ -5,10 +5,16 @@
         <div class="panel-body">
           <div class="form-group">
             <label for="clientname">Client</label>
-            <select class="form-control" name="cvrNumber" id="cvrNumber">
-              <option disable>Select CVR Number</option>
+            <!-- <select class="form-control" name="cvrNumber" id="cvrNumber">
+              <option value disabled selected>Select CVR Number</option>
               <option v-for="(client, k) in clients" :key="k">{{client.cvr}}</option>
-            </select>
+            </select> -->
+            <input
+              type="text"
+              placeholder="Enter Client CVR"
+              class="form-control"
+              v-model="CVR"
+            />
           </div>
           <div class="form-group">
             <label for="roductname">Project Name</label>
@@ -23,7 +29,6 @@
             <label for="productdesc">Project description</label>
             <textarea
               style="width: 100%; resize: none;"
-              name="test"
               id="projectDescription"
               rows="3"
               placeholder="Enter Project Description"
@@ -91,7 +96,8 @@
 
     <div class="panel panel-default" style="padding-bottom:21px;">
       <select class="form-control col-md-6" v-model="cvr">
-        <option value disabled selected>Pick a Template Task</option>
+        <option value disabled selected>Pick a Template Task</option>¨
+        <option v-for="(template, k) in templates" :key="k" @click="addTemplate">{{template.Template_Name}}</option>
       </select>
       <table class="table">
         <thead>
@@ -136,12 +142,15 @@
         <button type="submit" class="btn btn-primary" style="margin-right: 10px; float: right">
           <i class="fa fa-save"></i> Save
         </button>
+        <!-- <button type="submit" class="btn btn-space btn-primary">Create Client</button> -->
         <!-- <button type="button" class="btn btn-primary" style="margin-left: 10px" @click="getClient">
           <i class="fa fa-plus"></i> test
         </button>-->
       </div>
     </div>
+    <button type="submit" class="btn btn-space btn-primary">Create Client</button>
   </div>
+
 </template>
 
 <script>
@@ -149,6 +158,7 @@ import { debounce } from "lodash";
 export default {
   data() {
     return {
+      CVR: "",
       projectName: "",
       projectDescription: "",
       devTime: 0,
@@ -164,19 +174,21 @@ export default {
           save: false
         }
       ],
-      templates: [
-        {
-          title: "",
-          description: "",
-          estimate: 0
-        }
-      ],
-      clients: [
-        {
-          cvr: "",
-          default_price: 970
-        }
-      ]
+    //   templates: [
+    //     {
+    //       title: "",
+    //       description: "",
+    //       estimate: 0
+    //     }
+    //   ],
+      templates: [],
+      clients: [],
+    //   clients: [
+    //     {
+    //       cvr: "",
+    //       default_price: 970
+    //     }
+    //   ]
     };
   },
   methods: {
@@ -223,6 +235,14 @@ export default {
     },
 
     addNewRow() {
+      this.tasks.push({
+        title: "",
+        description: "",
+        estimate: 0,
+        save: false
+      });
+    },
+    addTemplate() {
       this.tasks.push({
         title: "",
         description: "",

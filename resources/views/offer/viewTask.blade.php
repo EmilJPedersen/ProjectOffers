@@ -16,7 +16,7 @@
                                 <a href="{{ url('createOffer') }}" style=""
                                     class="btn text-white btn-space btn-primary float-right"><i
                                         class="icon icon-left mdi mdi-plus"></i> Edit Offer</a>
-                                <a href="{{ url('createOffer') }}" style="float: right"
+                                <a href="{{ route('viewTask/', $tasks->OID,'/pdf') }}" style=""
                                     class="btn text-white btn-space btn-primary float-right"><i
                                         class="icon icon-left mdi mdi-plus"></i> Print as PDF</a>
                             </div>
@@ -27,7 +27,7 @@
                     <table class="row-clickable table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>TID test</th>
+                                <th>TID</th>
                                 <th>Task Name</th>
                                 <th>Task Description</th>
                                 <th>Estimate</th>
