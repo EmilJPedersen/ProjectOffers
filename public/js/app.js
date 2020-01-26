@@ -2097,20 +2097,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      //   cvr: "",
       projectName: "",
       projectDescription: "",
       devTime: 0,
       manageTime: 0,
       totalTime: 0,
       price: 0,
-      //   default_price: 970,
+      default_price: 970,
       tasks: [{
         title: "",
         description: "",
@@ -2143,7 +2140,7 @@ __webpack_require__.r(__webpack_exports__);
           return sum + estimate;
         }
       }, 0);
-      var price = this.clients.default_price;
+      var price = this.default_price;
       managetime = devtime / 100 * 20;
       totaltime = (devtime + managetime).toFixed(0);
       total = totaltime * price;
@@ -2195,7 +2192,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.search[data-v-5a9adb85] {\n  position: relative;\n}\n.searchIndicator[data-v-5a9adb85] {\n  position: absolute;\n  top: 5px;\n  right: 20px;\n}\n.searchResults[data-v-5a9adb85] {\n  position: absolute;\n  left: 0;\n  top: 40px;\n  min-width: 250px;\n  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\n  z-index: 99;\n}\n.searchResults ul li[data-v-5a9adb85] {\n  cursor: pointer;\n}\n.searchResults li span[data-v-5a9adb85] {\n  font-size: 0.8rem;\n}\n", ""]);
+exports.push([module.i, "\n.search[data-v-5a9adb85] {\r\n  position: relative;\n}\n.searchIndicator[data-v-5a9adb85] {\r\n  position: absolute;\r\n  top: 5px;\r\n  right: 20px;\n}\n.searchResults[data-v-5a9adb85] {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 40px;\r\n  min-width: 250px;\r\n  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\r\n  z-index: 99;\n}\n.searchResults ul li[data-v-5a9adb85] {\r\n  cursor: pointer;\n}\n.searchResults li span[data-v-5a9adb85] {\r\n  font-size: 0.8rem;\n}\r\n", ""]);
 
 // exports
 
@@ -21025,7 +21022,7 @@ var staticRenderFns = [
         staticStyle: { "margin-right": "10px", float: "right" },
         attrs: { type: "submit" }
       },
-      [_c("i", { staticClass: "fa fa-save" }), _vm._v(" Save test\n      ")]
+      [_c("i", { staticClass: "fa fa-save" }), _vm._v(" Save\n      ")]
     )
   }
 ]
@@ -33502,8 +33499,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Emil\Desktop\Final Exam\ProjectOffers\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Emil\Desktop\Final Exam\ProjectOffers\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\emilm\OneDrive\Dokumenter\GitHub\ProjectOffers\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\emilm\OneDrive\Dokumenter\GitHub\ProjectOffers\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

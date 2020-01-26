@@ -60,7 +60,7 @@ class ClientController extends Controller
 
         if($client->save())
         {
-            return redirect()->route('client.index');
+            return redirect()->route('client.viewClient');
         }else{
             $error = "Client not created!";
             return view('client.createClient', compact('error'));

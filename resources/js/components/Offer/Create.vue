@@ -134,7 +134,7 @@
           <i class="fa fa-plus"></i> Add
         </button>
         <button type="submit" class="btn btn-primary" style="margin-right: 10px; float: right">
-          <i class="fa fa-save"></i> Save test
+          <i class="fa fa-save"></i> Save
         </button>
         <!-- <button type="button" class="btn btn-primary" style="margin-left: 10px" @click="getClient">
           <i class="fa fa-plus"></i> test
@@ -155,6 +155,7 @@ export default {
       manageTime: 0,
       totalTime: 0,
       price: 0,
+      default_price: 970,
       tasks: [
         {
           title: "",
@@ -194,7 +195,7 @@ export default {
         }
       }, 0);
 
-      var price = this.clients.default_price;
+      var price = this.default_price;
       managetime = (devtime / 100) * 20;
       totaltime = (devtime + managetime).toFixed(0);
       total = totaltime * price;
